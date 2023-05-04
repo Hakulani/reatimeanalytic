@@ -1,10 +1,11 @@
 CREATE SOURCE CONNECTOR `postgres-source` WITH(
     "connector.class"='io.confluent.connect.jdbc.JdbcSourceConnector',
     "connection.url"='jdbc:postgresql://postgres:5432/root?user=root&password=secret',
+    "mode"='incrementing',
+    "incrementing.column.name"='id',
     "topic.prefix"='',
-    "table.whitelist": "food",
-    "mode"='bulk',
-    "poll.interval.ms"= '3600000' );
+    "table.whitelist"='food_raw',
+    "key"='id');
 
 
 CREATE SINK CONNECTOR `elasticsearch-sink` WITH(
@@ -14,5 +15,6 @@ CREATE SINK CONNECTOR `elasticsearch-sink` WITH(
     "connection.password"='',
     "batch.size"='1',
     "write.method"='insert',
-    "topics"='food',
-    "type.name"='changes');
+    "topics"='food_raw',
+    "type.name"='changes',
+    "key"='title_id');
