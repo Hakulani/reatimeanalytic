@@ -35,7 +35,14 @@ ksql> LIST TOPICS;
  ksql-connect-offsets  | 25         | 1
  ksql-connect-statuses | 5          | 1
 ---------------------------------------------------------
-ksql>
+ksql> SHOW CONNECTORS;
+
+ Connector Name     | Type   | Class                                                         | Status
+
+------------------------------------------------------------------------------------------------------------------------
+ postgres-source    | SOURCE | io.confluent.connect.jdbc.JdbcSourceConnector                 | RUNNING (1/1 tasks RUNNING)
+ elasticsearch-sink | SINK   | io.confluent.connect.elasticsearch.ElasticsearchSinkConnector | WARNING (0/1 tasks RUNNING)
+------------------------------------------------------------------------------------------------------------------------
 
 
 ```
