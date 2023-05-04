@@ -12,10 +12,10 @@ RUN SCRIPT '/etc/sql/all.sql';
 
 open new terminal
 
-docker exec -ti postgres psql -c "select * from food"
-
+docker exec -ti postgres psql -c "select * from food_raw"
 open new terminal
-docker-compose exec elasticsearch curl -XGET "localhost:9200/food/_search?format=json&prett
+docker-compose exec elasticsearch curl -XGET "localhost:9200/food_raw/_search?format=json&pretty"
+
 
 ksql> SHOW TOPICS;
 
