@@ -17,4 +17,25 @@ docker exec -ti postgres psql -c "select * from food"
 open new terminal
 docker-compose exec elasticsearch curl -XGET "localhost:9200/food/_search?format=json&prett
 
+ksql> SHOW TOPICS;
+
+ Kafka Topic           | Partitions | Partition Replicas
+---------------------------------------------------------
+ food                  | 1          | 1
+ ksql-connect-configs  | 1          | 1
+ ksql-connect-offsets  | 25         | 1
+ ksql-connect-statuses | 5          | 1
+---------------------------------------------------------
+ksql> LIST TOPICS;
+
+ Kafka Topic           | Partitions | Partition Replicas
+---------------------------------------------------------
+ food                  | 1          | 1
+ ksql-connect-configs  | 1          | 1
+ ksql-connect-offsets  | 25         | 1
+ ksql-connect-statuses | 5          | 1
+---------------------------------------------------------
+ksql>
+
+
 ```
