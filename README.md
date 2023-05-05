@@ -168,11 +168,11 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    ```   
 
 
-  6. Data visualization from mongoDB with python 
+  5. Data visualization from mongoDB with python 
  Using Dash plotly
  
  
- 6.1 app version
+ 5.1 app version
 
 
  ``` 
@@ -187,7 +187,7 @@ Dash is running on http://127.0.0.1:8050/
 python app2.py
 Dash is running on http://127.0.0.1:8050/ 
 ``` 
-6.2 jupyter notebook version
+5.2 jupyter notebook version
 
 จาก Pivot table 
 ทั้งเพศชายและหญิง คนที่กิน comford food กินเพราะว่าช่วยบรรเทาการเครียด และมีความเบื่ออาหาร 
