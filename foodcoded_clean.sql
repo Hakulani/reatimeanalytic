@@ -38,4 +38,4 @@ REATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS
             (CASE WHEN (foodcoded.weight = '') THEN null
              ELSE CAST(REGEXP_REPLACE(foodcoded.weight, '[^0-9]+', '') AS INT) END) weight
       FROM foodcoded
-      EMIT CHANGES;
+      EMIT CHANGES
