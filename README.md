@@ -1,4 +1,7 @@
 ## NIDA DADS6005 Realtime Analytics QUIZ2 Ksqldb
+ 
+[<img src="https://i.ytimg.com/vi/2h7hayZmR08/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=2h7hayZmR08 "Now in Android: 55")
+
 # Team member :
 1. 6420422002 Tanakorn Withuratธนากร วิธุรัติ
 
