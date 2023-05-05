@@ -293,6 +293,8 @@ customers=# select * from foodcoded;
 more
 
 ksqldb docker
+
+
 docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
 D:\DADS6005\Quiz2\PJR>docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
@@ -350,8 +352,14 @@ CREATE STREAM foodcoded WITH (
     kafka_topic = 'localhost.public.foodcoded',
     value_format = 'avro'
 );
-
+ 
+Message
+----------------
+ Stream created
+----------------
 Show data from table
+
+
 SELECT * from foodcoded 
 EMIT CHANGES;
 
@@ -702,6 +710,39 @@ Message
 -------------------------------
  Created connector DATA_WRITER
 -------------------------------
+ksql> SHOW CONNECTORS;
+
+ Connector Name   | Type   | Class                                                         | Status
+
+------------------------------------------------------------------------------------------------------------------------
+ DATA_WRITER      | SINK   | io.confluent.connect.elasticsearch.ElasticsearchSinkConnector | WARNING (0/1 tasks RUNNING)
+
+ CUSTOMERS_READER | SOURCE | io.debezium.connector.postgresql.PostgresConnector            | RUNNING (1/1 tasks RUNNING)
+
+------------------------------------------------------------------------------------------------------------------------
+
+ksql> SHOW STREAMS;
+
+ Stream Name         | Kafka Topic                 | Key Format | Value Format | Windowed
+------------------------------------------------------------------------------------------
+ FOODCODED           | localhost.public.foodcoded  | KAFKA      | AVRO         | false
+ FOODCODED_ANALYZE   | foodcoded_analyze           | KAFKA      | AVRO         | false
+ FOODCODED_CLEAN     | foodcoded_clean             | KAFKA      | AVRO         | false
+ KSQL_PROCESSING_LOG | default_ksql_processing_log | KAFKA      | JSON         | false
+------------------------------------------------------------------------------------------
+
+ksql> SHOW TOPICS;
+
+ Kafka Topic                 | Partitions | Partition Replicas
+---------------------------------------------------------------
+ _ksql-connect-configs       | 1          | 1
+ _ksql-connect-offsets       | 25         | 1
+ _ksql-connect-statuses      | 5          | 1
+ default_ksql_processing_log | 1          | 1
+ foodcoded_analyze           | 1          | 1
+ foodcoded_clean             | 1          | 1
+ localhost.public.foodcoded  | 1          | 1
+---------------------------------------------------------------
 
 View data in Elasticsearch  
 
