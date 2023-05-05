@@ -110,7 +110,8 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
 
 4. Start Ksql to create the connector.
 
-   ```docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+   ```
+    docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
    
     SET 'auto.offset.reset' = 'earliest';
     
