@@ -63,9 +63,10 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    
    Enter the following queries to create a source connector:
 
-   ```
-   SET 'auto.offset.reset' = 'earliest';
-   CREATE SOURCE CONNECTOR customers_reader WITH (
+ 
+      ```
+      SET 'auto.offset.reset' = 'earliest';
+       CREATE SOURCE CONNECTOR customers_reader WITH (
        'connector.class' = 'io.debezium.connector.postgresql.PostgresConnector',
        'database.hostname' = 'postgres',
        'database.port' = '5432',
@@ -78,22 +79,24 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
        'transforms.unwrap.type' = 'io.debezium.transforms.ExtractNewRecordState',
        'transforms.unwrap.drop.tombstones' = 'false',
        'transforms.unwrap.delete.handling.mode' = 'rewrite'
-   );
-   ```
-   Create a Stream topic1 for receiving data:
-
-   ```
-   CREATE STREAM foodcoded WITH (kafka_topic = 'localhost.public.foodcoded', value_format = 'avro');```
+   );   
    
    ```
+ 
+   Create a Stream topic1 for receiving data:
+ 
+      ```CREATE STREAM foodcoded WITH (kafka_topic = 'localhost.public.foodcoded', value_format = 'avro');```
+   
+ 
    Create a Stream topic2 for cleaning data follow food_clean.sql.
 
    Create a Stream topic3 for analyzing data follow food_analyze.sql.
 
    Enter the following queries to create a sink connector:
 
+ 
    ```
-CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
+   CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
    "connector.class"='com.mongodb.kafka.connect.MongoSinkConnector',
    "key.converter"='org.apache.kafka.connect.storage.StringConverter',
    "value.converter"='io.confluent.connect.avro.AvroConverter',
@@ -105,8 +108,10 @@ CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
    "database"='foodcoded_db',
    "collection"='foodcoded_analyze',
    "topics"='food_analyze'
-);
-  ```
+);   
+
+```
+ 
   6. Data visualization from mongoDB with python 
  Using Dash plotly
 
