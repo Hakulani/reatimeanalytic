@@ -1,4 +1,19 @@
  
+## Assignment :
+
+System design
+- Use Python to write the data source line-by-line from the CSV to SQL database (DB) (source part). The writing duration (d) must be random and between 0 < d < 2 seconds.
+- Connect the SQL DB to a Kafka cluster via topic1.
+- Clean the data in topic1 using ksqlDB and then submit it to topic2.
+- Analyze the data in topic2 using ksqlDB and then submit it to topic3.
+The source part (NoSQL DB) will incrementally consume the data from topic3
+- Visualize the real-time data from topic3 using tools such as Plotly, etc..
+- Conduct analytics based on your questions
+- Set up and answer three questions 
+easy, e.g., simple statistics
+medium, e.g., join, windowed, etc.
+hard, e.g., analytical insight
+
  
  
 
@@ -6,8 +21,8 @@
 
 The objective of this project is to design and implement a data-streaming and real-time analytics system that can be used to analyze college students' food and cooking preferences data from Kaggle. The project involves data cleansing and analytics to be done in real-time.
 
-Datasets:
-
+## Datasets:
+https://www.kaggle.com/datasets/borapajo/food-choices?select=food_coded.csv
 The project uses the Food Choices dataset available on Kaggle. The dataset contains 106 records and 61 columns.
 
 ## System Design:
