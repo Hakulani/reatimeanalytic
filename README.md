@@ -4,6 +4,10 @@
 ```
 สร้าง docker-compose.yml ตามตัวอย่าง
 
+
+
+สร้าง docker-compose.yml ตามตัวอย่าง
+
 --------------------------
 ---
 version: '2'
@@ -135,21 +139,33 @@ confluent-hub install --component-dir confluent-hub-components --no-prompt confl
 มี folder  confluent-hub-components
 ref : Debezium Connector for MongoDB
 https://debezium.io/documentation/reference/1.1/connectors/mongodb.html
-มีfolder postgres
+ 
 
 
-docker compose up -d 
+docker compose up -d
+[+] Running 10/10
+ - mongodb Pulled                                                                                                 17.7s
+   - 1bc677758ad7 Pull complete                                                                                    3.2s
+   - 7eb83bb7be98 Pull complete                                                                                    3.3s
+   - e95121721c4c Pull complete                                                                                    3.4s
+   - 799041b403ca Pull complete                                                                                    3.5s
+   - 1828e70ef29a Pull complete                                                                                    3.6s
+   - 8e3781beae9e Pull complete                                                                                    3.6s
+   - 5d5753162333 Pull complete                                                                                    3.6s
+   - 44dd404b40f4 Pull complete                                                                                   11.9s
+   - 44599c9d5d1b Pull complete                                                                                   11.9s
+[+] Running 9/9
+ - Network main_default       Created                                                                              0.9s
+ - Container zookeeper        Started                                                                              4.3s
+ - Container postgres         Started                                                                              4.6s
+ - Container mongodb          Started                                                                              3.8s
+ - Container elastic          Started                                                                              5.7s
+ - Container broker           Started                                                                              5.5s
+ - Container schema-registry  Started                                                                              7.3s
+ - Container ksqldb-server    Started                                                                              9.3s
+ - Container ksqldb-cli       Started                                                                             11.3s
 
-[+] Running 8/8
- - Network pjr_default        Created                                                                                                                                                                       0.6s
- - Container zookeeper        Started                                                                                                                                                                       3.4s
- - Container postgres         Started                                                                                                                                                                       3.4s
- - Container elastic          Started                                                                                                                                                                       4.3s
- - Container broker           Started                                                                                                                                                                       4.7s
- - Container schema-registry  Started                                                                                                                                                                       6.1s
- - Container ksqldb-server    Started                                                                                                                                                                       7.9s
- - Container ksqldb-cli       Started                                                                                                                                                                       9.4s
-
+D:\DADS6005\Quiz2\main>
 Create table to Postgres with python 
 python create_table.py
 create table
@@ -228,7 +244,7 @@ ksqldb docker
 
 
 docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
-D:\DADS6005\Quiz2\PJR>docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+ 
 OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
 
                   ===========================================
@@ -289,6 +305,14 @@ Message
 ----------------
  Stream created
 ----------------
+
+
+ Stream Name         | Kafka Topic                 | Key Format | Value Format | Windowed
+------------------------------------------------------------------------------------------
+ FOODCODED           | localhost.public.foodcoded  | KAFKA      | AVRO         | false
+ KSQL_PROCESSING_LOG | default_ksql_processing_log | KAFKA      | JSON         | false
+------------------------------------------------------------------------------------------
+
 Show data from table
 
 
@@ -306,7 +330,7 @@ EMIT CHANGES;
 
 
 Create a Stream topic "foodcoded_clean" for clean data
-**อย่าเพิ่งรันบรรทัดบน
+ 
 CREATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS 
 
 
@@ -629,32 +653,10 @@ Message
  Created query with ID CSAS_FOODCODED_ANALYZE_13
 -------------------------------------------------
 
- create a sink connector
-
-CREATE SINK CONNECTOR enriched_writer WITH (
-    'connector.class' = 'io.confluent.connect.elasticsearch.ElasticsearchSinkConnector',
-    'connection.url' = 'http://elastic:9200',
-    'type.name' = 'kafka-connect',
-    'topics' = 'foodcoded_analyze'
-);
-
-
-MMessage
------------------------------------
- Created connector ENRICHED_WRITER
------------------------------------
-ksql> SHOW CONNECTORS;
-
- Connector Name   | Type   | Class                                                         | Status
-
-------------------------------------------------------------------------------------------------------------------------
- ENRICHED_WRITER  | SINK   | io.confluent.connect.elasticsearch.ElasticsearchSinkConnector | WARNING (0/1 tasks RUNNING)
-
- CUSTOMERS_READER | SOURCE | io.debezium.connector.postgresql.PostgresConnector            | RUNNING (1/1 tasks RUNNING)
-
-------------------------------------------------------------------------------------------------------------------------
-
-
+PRINT foodcoded_analyze from beginning;
+------------------------------------
+"American", "DIET_CURRENT_CODED": 1, "DIET_CURRENT_CODED_DESC": "healthy/balanced/moderated/", "EATING_OUT": 5, "EATING_OUT_DESC": "every day", "EMPLOYMENT": 2, "EMPLOYMENT_DESC": "yes part time", "ETHNIC_FOOD": 2, "ETHNIC_FOOD_DESC": "unlikely", "EXERCISE": 1, "EXERCISE_DESC": "Everyday", "FAV_CUISINE": "Italian", "FAV_CUISINE_CODED": 1, "FAV_CUISINE_CODED_DESC": "Italian/French/greek", "FAV_FOOD": 3, "FAV_FOOD_DESC": "both bought at store and cooked at home", "FOOD_CHILDHOOD": "pizza and spaghetti ", "FOOD_CHILDHOOD_SPLIT": "", "FRUIT_DAY": 5, "FRUIT_DAY_DESC": "very likely", "GREEK_FOOD": 1, "GREEK_FOOD_DESC": "very unlikely", "HEALTHY_FEELING": 1, "INCOME": 4, "INCOME_DESC": "$50,001 to $70,000", "INDIAN_FOOD": 1, "INDIAN_FOOD_DESC": "very unlikely", "ITALIAN_FOOD": 5, "ITALIAN_FOOD_DESC": "very likely", "MARITAL_STATUS": 1, "MARITAL_STATUS_DESC": "Single", "NUTRITIONAL_CHECK": 4, "NUTRITIONAL_CHECK_DESC": "on most products", "ON_OFF_CAMPUS": 1, "ON_OFF_CAMPUS_DESC": "On campus", "PARENTS_COOK": 2, "PARENTS_COOK_DESC": "2-3 times a week", "PAY_MEAL_OUT": 3, "PAY_MEAL_OUT_DESC": "$10.01 to $20.00", "PERSIAN_FOOD": 1, "PERSIAN_FOOD_DESC": "very unlikely", "SELF_PERCEPTION_WEIGHT": 2, "SELF_PERCEPTION_WEIGHT_DESC": "very fit", "SPORTS": 2, "SPORTS_DESC": "No", "THAI_FOOD": 1, "THAI_FOOD_DESC": "very unlikely", "VEGGIES_DAY": 3, "VEGGIES_DAY_DESC": "neutral", "VITAMINS": 1, "VITAMINS_DESC": "Yes", "WEIGHT": 135}, partition: 0
+rowtime: 2023/05/05 12:00:27.222 Z, key: <null>, value: {"GPA": 3.9, "GRADE": "B+", "GENDER": 1, "GENDER_DESC": "Female", "CALORIES_DAY": null, "CALORIES_DAY_DESC": null, "COMFORT_FOOD_REASONS_CODED": null, "COMFORT_FOOD_REASONS_CODED_DESC": null, "COOK": null, "COOK_DESC": null, "CUISINE": 3, "CUISINE_DESC": "Korean/Asian", "DIET_CURRENT_CODED": 1, "DIET_CURRENT_CODED_DESC": "healthy/balanced/moderated/", "EATING_OUT": 1, "EATING_OUT_DESC": "Never", "EMPLOYMENT": 2, "EMPLOYMENT_DESC": "yes part time", "ETHNIC_FOOD": 3, "ETHNIC_FOOD_DESC": "neutral", "EXERCISE": 2, "EXERCISE_DESC": "Twice or three times per week", "FAV_CUISINE": "HISPANIC CUISINE.", "FAV_CUISINE_CODED": 2, "FAV_CUISINE_CODED_DESC": "Spanish/mexican", "FAV_FOOD": 1, "FAV_FOOD_DESC": "cooked at home", "FOOD_CHILDHOOD": "rice, beans, and chicken / pizza/ tenders", "FOOD_CHILDHOOD_SPLIT": "rice,", "FRUIT_DAY": 3, "FRUIT_DAY_DESC": "neutral", "GREEK_FOOD": 2, "GREEK_FOOD_DESC": "unlikely", "HEALTHY_FEELING": 3, "INCOME": 5, "INCOME_DESC": "$70,001 to $100,000", "INDIAN_FOOD": 2, "INDIAN_FOOD_DESC": "unlikely", "ITALIAN_FOOD": 3, "ITALIAN_FOOD_DESC": "neutral", "MARITAL_STATUS": 2, "MARITAL_STATUS_DESC": "In a relationship", "NUTRITIONAL_CHECK": 5, "NUTRITIONAL_CHECK_DESC": "on everything", "ON_OFF_CAMPUS": 1, "ON_OFF_CAMPUS_DESC": "On campus", "PARENTS_COOK": 3, "PARENTS_COOK_DESC": "1-2 times a week", "PAY_MEAL_OUT": 3, "PAY_MEAL_OUT_DESC": "$10.01 to $20.00", "PERSIAN_FOOD": 2, "PERSIAN_FOOD_DESC": "unlikely", "SELF_PERCEPTION_WEIGHT": 3, "SELF_PERCEPTION_WEIGHT_DESC": "just right", "SPORTS": 2, "SPORTS_DESC": "No", "THAI_FOOD": 2, "THAI_FOOD_DESC": "unlikely", "VEGGIES_DAY": 4, "VEGGIES_DAY_DESC": "likely", "VITAMINS": 2, "VITAMINS_DESC": "No", "WEIGHT": 135}, partition: 0
 ksql> SHOW STREAMS;
 
  Stream Name         | Kafka Topic                 | Key Format | Value Format | Windowed
@@ -665,23 +667,68 @@ ksql> SHOW STREAMS;
  KSQL_PROCESSING_LOG | default_ksql_processing_log | KAFKA      | JSON         | false
 ------------------------------------------------------------------------------------------
 
-ksql> SHOW TOPICS;
+Check data 
 
- Kafka Topic                 | Partitions | Partition Replicas
----------------------------------------------------------------
- _ksql-connect-configs       | 1          | 1
- _ksql-connect-offsets       | 25         | 1
- _ksql-connect-statuses      | 5          | 1
- default_ksql_processing_log | 1          | 1
- foodcoded_analyze           | 1          | 1
- foodcoded_clean             | 1          | 1
- localhost.public.foodcoded  | 1          | 1
----------------------------------------------------------------
+ksql> SELECT * FROM FOODCODED_CLEAN;
+PRINT foodcoded_clean from beginning ;
 
-View data in Elasticsearch  
 
-curl "http://localhost:9200/foodcoded_analyze/_search?pretty"
 
-curl -XGET "http://localhost:9200/foodcoded_analyze/_search?pretty"
+
+SELECT * FROM foodcoded_analyze
+EMIT CHANGES;
+
+
+ksql> SELECT * FROM  FOODCODED_ANALYZE
+>EMIT CHANGES;
+PRINT foodcoded_analyze from beginning ;
+
+ create a sink connector
+
+
+Next, create a JSON configuration file for the MongoDB sink connector, e.g., mongodb-sink-connector.json:
+
+{
+  "name": "mongodb-sink-connector",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "tasks.max": "1",
+    "topics": "foodcoded_analyze",
+    "connection.uri": "mongodb://root:rootpassword@mongodb:27017",
+    "database": "foodcoded_db",
+    "collection": "foodcoded_analyze",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}
+
+
+Then, run the following command from your host machine to create the MongoDB sink connector:
+
+curl -X POST -H "Content-Type: application/json" -d @mongodb-sink-connector.json http://localhost:8083/connectors
+
+
+CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
+   "connector.class"='com.mongodb.kafka.connect.MongoSinkConnector',
+   "key.converter"='org.apache.kafka.connect.storage.StringConverter',
+   "value.converter"='io.confluent.connect.avro.AvroConverter',
+   "value.converter.schema.registry.url"='http://schema-registry:8081',
+   "key.converter.schemas.enable"='false',
+   "value.converter.schemas.enable"='true',
+   "tasks.max"='1',
+   "connection.uri"='mongodb://root:rootpassword@mongodb:27017/admin?readPreference=primary&appname=ksqldbConnect&ssl=false',
+   "database"='foodcoded_db',
+   "collection"='foodcoded_analyze',
+   "topics"='foodcoded_analyze'
+);
+ Message
+------------------------------------------
+ Created connector mongodb_foodcoded_sink
+------------------------------------------
+
+create app.py เพื่อทำการอ่าน data from mongoDB
+
+
 
  ```
