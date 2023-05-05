@@ -167,10 +167,13 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    
    ```   
 
+
   6. Data visualization from mongoDB with python 
  Using Dash plotly
  
+ 
  6.1 app version
+
 
  ``` 
  python app.py
