@@ -54,6 +54,27 @@ The system design for the project is as follows:
   - Easy, e.g., simple statistics
   - Medium, e.g., join, windowed, etc.
   - Hard, e.g., analytical insight
+## Download Connector 
+
+ 
+Get the connectors
+To get started, download the connectors for Postgres, MongoDB, and Elasticsearch to a fresh directory. The easiest way to do this is by using confluent-hub.   https://docs.confluent.io/platform/current/connect/confluent-hub/client.html
+
+Create a directory for your components:
+mkdir confluent-hub-components
+
+First, acquire the Postgres Debezium connector:
+confluent-hub install --component-dir confluent-hub-components --no-prompt debezium/debezium-connector-postgresql:1.1.0
+
+Likewise for the MongoDB Debezium connector:
+confluent-hub install --component-dir confluent-hub-components --no-prompt debezium/debezium-connector-mongodb:1.1.0
+
+And finally, the Elasticsearch connector:
+confluent-hub install --component-dir confluent-hub-components --no-prompt confluentinc/kafka-connect-elasticsearch:10.0.1
+
+ref : Debezium Connector for MongoDB
+https://debezium.io/documentation/reference/1.1/connectors/mongodb.html
+
 
 ## Steps:
 0. download zip file and unzip
