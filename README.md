@@ -82,8 +82,10 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    ```
    Create a Stream topic1 for receiving data:
 
-   ```CREATE STREAM foodcoded WITH (kafka_topic = 'localhost.public.foodcoded', value_format = 'avro');```
+   ```
+   CREATE STREAM foodcoded WITH (kafka_topic = 'localhost.public.foodcoded', value_format = 'avro');```
    
+   ```
    Create a Stream topic2 for cleaning data follow food_clean.sql.
 
    Create a Stream topic3 for analyzing data follow food_analyze.sql.
