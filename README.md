@@ -147,7 +147,7 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
  python app.py
 Dash is running on http://127.0.0.1:8050/ 
 ``` 
-
+จาก Histrogram เพศชายมีน้ำหนักมากกว่าเพศหญิง
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/61573397/236524985-42c3e9c0-0ffc-4640-995e-9238164505a0.png)
  
  
@@ -157,10 +157,19 @@ Dash is running on http://127.0.0.1:8050/
 ``` 
 6.2 jupyter notebook version
 
+จาก Pivot table 
+คนที่กิน comford food กินเพราะว่าช่วยบรรเทาการเครียด และมีความเบื่ออาหารและ เพศหญิงส่วนใหญ่ให้ความสำคัญเกี่ยวกับการนับแคลลอรี่อาหารต่อวัน 
 ![01](https://user-images.githubusercontent.com/61573397/236533746-3bb290d7-c1fc-41ae-abe5-20181a8848e4.jpg)
 ![02](https://user-images.githubusercontent.com/61573397/236533759-c9c25521-e603-40df-b4c0-60564c8b25c5.jpg)
+วิธีการไดเอทแต่ละชั้นปี ทุก Grade Level ใช้วิธี ทานผักผลไม้และอาหารเพื่อสุขภาพ
+แต่วิธีการที่รองลงมาแตกต่างกันดังนี้
+Senior : more protein
+Junior : current diet
+Sophomore & Freshman : home cooked / organic
 ![03](https://user-images.githubusercontent.com/61573397/236533763-59dd38f5-b49a-4254-9f21-238d698f670b.jpg)
+คนส่วนมากคิดว่าอาหารที่มีแคลลอรรี่มากที่สุดคือ waffle รองลงมาคือ tortilla ในทางตรงกันข้ามคนส่วนใหญ่กลับคิดว่า scone มีแคลลอรี่น้อยที่สุด
 ![04](https://user-images.githubusercontent.com/61573397/236533765-99d3fe32-bf12-451c-82bf-890a9028de7d.jpg)
+น้ำหนักและGPA ไม่ได้มีความสัมพันธ์เชิงเส้นต่อกัน
 ![05](https://user-images.githubusercontent.com/61573397/236533772-8839bb5d-16ea-41e8-89fc-d754bf887090.jpg)
 
 
