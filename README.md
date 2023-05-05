@@ -59,7 +59,8 @@ The system design for the project is as follows:
   - Hard, e.g., analytical insight
 
 ## Steps:
-
+0. download zip file and unzip
+cmd in folder
 1. Create docker file from the ksqlDB tutorial page. 
 https://docs.ksqldb.io/en/latest/tutorials/etl/
 
