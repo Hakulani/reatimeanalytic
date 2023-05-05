@@ -9,6 +9,10 @@
 4. 6420422017 Witsarut Wongsim วิศรุต วงศ์ซิ้ม
 
 5. 6420422021 Suchawalee Jeeratanyasakul สุชาวลี จีระธัญญาสกุล
+
+![image](https://user-images.githubusercontent.com/61573397/236550567-f7800e7f-d4f2-425c-9b14-d2519ff4cd5b.png)
+
+
 ## Assignment :
 
  - Use Python to write the data source line-by-line from the CSV to SQL database (DB) (source part). The writing duration (d) must be random and between 0 < d < 2 seconds.
