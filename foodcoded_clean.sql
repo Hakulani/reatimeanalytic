@@ -1,4 +1,4 @@
-CREATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS 
+CREATE STREAM food_clean WITH (kafka_topic = 'food_clean') AS 
       SELECT
             (CASE WHEN ((foodcoded.GPA = '') OR (foodcoded.GPA = 'Personal') OR (foodcoded.GPA = 'Unknown')) THEN null
              ELSE CAST(REGEXP_REPLACE(foodcoded.GPA, '[a-zA-Z]+', '') AS DOUBLE) END) GPA,
