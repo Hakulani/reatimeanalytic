@@ -91,8 +91,29 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    Enter the following queries to create a sink connector:
 
    ```
-   CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
-      "connector.class"='com.mongodb.kafka.connect.MongoSinkConnector',
-      "key.converter"='org
+CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
+   "connector.class"='com.mongodb.kafka.connect.MongoSinkConnector',
+   "key.converter"='org.apache.kafka.connect.storage.StringConverter',
+   "value.converter"='io.confluent.connect.avro.AvroConverter',
+   "value.converter.schema.registry.url"='http://schema-registry:8081',
+   "key.converter.schemas.enable"='false',
+   "value.converter.schemas.enable"='true',
+   "tasks.max"='1',
+   "connection.uri"='mongodb://root:rootpassword@mongodb:27017/admin?readPreference=primary&appname=ksqldbConnect&ssl=false',
+   "database"='foodcoded_db',
+   "collection"='foodcoded_analyze',
+   "topics"='food_analyze'
+);
   ```
-      
+  6. Data visualization from mongoDB with python 
+ Using Dash plotly
+
+python app.py
+Dash is running on http://127.0.0.1:8050/
+
+python app2.py
+
+Dash is running on http://127.0.0.1:8050/
+
+  
+ 
