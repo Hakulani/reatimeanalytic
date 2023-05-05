@@ -1,6 +1,4 @@
-REATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS 
-
-
+CREATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS 
       SELECT
             (CASE WHEN ((foodcoded.GPA = '') OR (foodcoded.GPA = 'Personal') OR (foodcoded.GPA = 'Unknown')) THEN null
              ELSE CAST(REGEXP_REPLACE(foodcoded.GPA, '[a-zA-Z]+', '') AS DOUBLE) END) GPA,
@@ -38,4 +36,5 @@ REATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS
             (CASE WHEN (foodcoded.weight = '') THEN null
              ELSE CAST(REGEXP_REPLACE(foodcoded.weight, '[^0-9]+', '') AS INT) END) weight
       FROM foodcoded
-      EMIT CHANGES
+      WHERE foodcoded.calories_day is not null
+      EMIT CHANGES;
