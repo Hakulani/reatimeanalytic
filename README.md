@@ -631,27 +631,29 @@ Message
 
  create a sink connector
 
-CREATE SINK CONNECTOR data_writer WITH (
+CREATE SINK CONNECTOR enriched_writer WITH (
     'connector.class' = 'io.confluent.connect.elasticsearch.ElasticsearchSinkConnector',
     'connection.url' = 'http://elastic:9200',
     'type.name' = 'kafka-connect',
     'topics' = 'foodcoded_analyze'
 );
 
-Message
--------------------------------
- Created connector DATA_WRITER
--------------------------------
+
+MMessage
+-----------------------------------
+ Created connector ENRICHED_WRITER
+-----------------------------------
 ksql> SHOW CONNECTORS;
 
  Connector Name   | Type   | Class                                                         | Status
 
 ------------------------------------------------------------------------------------------------------------------------
- DATA_WRITER      | SINK   | io.confluent.connect.elasticsearch.ElasticsearchSinkConnector | WARNING (0/1 tasks RUNNING)
+ ENRICHED_WRITER  | SINK   | io.confluent.connect.elasticsearch.ElasticsearchSinkConnector | WARNING (0/1 tasks RUNNING)
 
  CUSTOMERS_READER | SOURCE | io.debezium.connector.postgresql.PostgresConnector            | RUNNING (1/1 tasks RUNNING)
 
 ------------------------------------------------------------------------------------------------------------------------
+
 
 ksql> SHOW STREAMS;
 
