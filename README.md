@@ -1,6 +1,5 @@
-## Team member :
- 
-
+## DADS6005 Realtime Analytics Quiz2
+# Team member :
 1. 6420422002 ธนากร วิธุรัติ
 
 2. 6420422008 วรรณนภา ศรีเพ็ญ
