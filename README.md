@@ -1,8 +1,19 @@
- 
+## Team member :
+
+สมาชิกกลุ่ม:
+
+1. 6420422002 ธนากร วิธุรัติ
+
+2. 6420422008 วรรณนภา ศรีเพ็ญ
+
+3. 6420422011 จันทร์ทนีย์ พัฒนสุขกุล
+
+4. 6420422017 วิศรุต วงศ์ซิ้ม
+
+5. 6420422021 สุชาวลี จีระธัญญาสกุล
 ## Assignment :
 
-System design
-- Use Python to write the data source line-by-line from the CSV to SQL database (DB) (source part). The writing duration (d) must be random and between 0 < d < 2 seconds.
+ - Use Python to write the data source line-by-line from the CSV to SQL database (DB) (source part). The writing duration (d) must be random and between 0 < d < 2 seconds.
 - Connect the SQL DB to a Kafka cluster via topic1.
 - Clean the data in topic1 using ksqlDB and then submit it to topic2.
 - Analyze the data in topic2 using ksqlDB and then submit it to topic3.
