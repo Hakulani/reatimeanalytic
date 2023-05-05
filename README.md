@@ -1,13 +1,92 @@
 # reatimeanalytic
-## CHAPTER2
+ 
 
 ```
-สร้าง docker-compose.yml ตามตัวอย่าง
+ ------------------------
+ Step
+1. create docker file follow 
+https://docs.ksqldb.io/en/latest/tutorials/etl/
+
+2.After docker build complete, run file <create_table.py> to create table inside Postgres
+read csv file and insert into Postgres
+
+
+python import_foodcoded.py
+
+
+3.Run file <import_foodcoded.py> to import data from <food_coded.csv>
+
+docker-compose up -d
+After docker build complete, run file <create_table.py> to create table inside Postgres
+
+python create_table.py
+You can check Postgres with command
+docker exec -it postgres /bin/bash
+psql -U postgres-user customers
+Inside Ksql, run command to check
+SHOW TABLES;
+3. Run file <import_foodcoded.py> to import data from <food_coded.csv>
+
+python import_foodcoded.py
+4.Start Ksql to create connector
+
+docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+Enter following queries to create a source connector
+
+SET 'auto.offset.reset' = 'earliest';
+CREATE SOURCE CONNECTOR customers_reader WITH (
+    'connector.class' = 'io.debezium.connector.postgresql.PostgresConnector',
+    'database.hostname' = 'postgres',
+    'database.port' = '5432',
+    'database.user' = 'postgres-user',
+    'database.password' = 'postgres-pw',
+    'database.dbname' = 'customers',
+    'database.server.name' = 'localhost',
+    'table.whitelist' = 'public.foodcoded',
+    'transforms' = 'unwrap',
+    'transforms.unwrap.type' = 'io.debezium.transforms.ExtractNewRecordState',
+    'transforms.unwrap.drop.tombstones' = 'false',
+    'transforms.unwrap.delete.handling.mode' = 'rewrite'
+);
+Create a Stream topic1 for recieve data
+
+CREATE STREAM foodcoded WITH (
+    kafka_topic = 'localhost.public.foodcoded',
+    value_format = 'avro'
+);
+Create a Stream topic2 for clean data follow <foodcoded_clean.sql>
+
+Create a Stream topic3 for analyze data follow <foodcoded_analyze.sql>
+
+Enter following queries to create a sink connector
 
 
 
-สร้าง docker-compose.yml ตามตัวอย่าง
+5. Analyzed data from mongoDB
 
+
+CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
+   "connector.class"='com.mongodb.kafka.connect.MongoSinkConnector',
+   "key.converter"='org.apache.kafka.connect.storage.StringConverter',
+   "value.converter"='io.confluent.connect.avro.AvroConverter',
+   "value.converter.schema.registry.url"='http://schema-registry:8081',
+   "key.converter.schemas.enable"='false',
+   "value.converter.schemas.enable"='true',
+   "tasks.max"='1',
+   "connection.uri"='mongodb://root:rootpassword@mongodb:27017/admin?readPreference=primary&appname=ksqldbConnect&ssl=false',
+   "database"='foodcoded_db',
+   "collection"='foodcoded_analyze',
+   "topics"='foodcoded_analyze'
+);
+ Message
+------------------------------------------
+ Created connector mongodb_foodcoded_sink
+------------------------------------------
+6. Data visualization from mongoDB with python 
+ Using Dash plotly
+
+python app.py
+Dash is running on http://127.0.0.1:8050/
 --------------------------
 ---
 version: '2'
