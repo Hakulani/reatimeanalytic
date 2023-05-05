@@ -54,9 +54,9 @@ CREATE STREAM foodcoded WITH (
     kafka_topic = 'localhost.public.foodcoded',
     value_format = 'avro'
 );
-Create a Stream topic2 for clean data follow <foodcoded_clean.sql>
+Create a Stream topic2 for clean data follow <food_clean.sql>
 
-Create a Stream topic3 for analyze data follow <foodcoded_analyze.sql>
+Create a Stream topic3 for analyze data follow <food_analyze.sql>
 
 Enter following queries to create a sink connector
 
@@ -76,7 +76,7 @@ CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
    "connection.uri"='mongodb://root:rootpassword@mongodb:27017/admin?readPreference=primary&appname=ksqldbConnect&ssl=false',
    "database"='foodcoded_db',
    "collection"='foodcoded_analyze',
-   "topics"='foodcoded_analyze'
+   "topics"='food_analyze'
 );
  Message
 ------------------------------------------
