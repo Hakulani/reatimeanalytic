@@ -1,8 +1,8 @@
-# reatimeanalytic
  
-README for Real-time Analytics using ksqlDB
+ 
+ 
 
-Objective:
+## Objective:
 
 The objective of this project is to design and implement a data-streaming and real-time analytics system that can be used to analyze college students' food and cooking preferences data from Kaggle. The project involves data cleansing and analytics to be done in real-time.
 
@@ -10,7 +10,7 @@ Datasets:
 
 The project uses the Food Choices dataset available on Kaggle. The dataset contains 106 records and 61 columns.
 
-System Design:
+## System Design:
 
 The system design for the project is as follows:
 
