@@ -124,9 +124,10 @@ Dash is running on http://127.0.0.1:8050/
 ![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/61573397/236524985-42c3e9c0-0ffc-4640-995e-9238164505a0.png)
  
  
- ``` python app2.py
-
-Dash is running on http://127.0.0.1:8050/ ``` 
+ ``` 
+python app2.py
+Dash is running on http://127.0.0.1:8050/ 
+``` 
 
   
  
