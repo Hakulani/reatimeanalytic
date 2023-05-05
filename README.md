@@ -1,14 +1,14 @@
-## DADS6005 Realtime Analytics Quiz2
+## NIDA DADS6005 Realtime Analytics QUIZ2 Ksqldb
 # Team member :
-1. 6420422002 ธนากร วิธุรัติ
+1. 6420422002 Tanakorn Withuratธนากร วิธุรัติ
 
-2. 6420422008 วรรณนภา ศรีเพ็ญ
+2. 6420422008 Wannapa Sripen วรรณนภา ศรีเพ็ญ
 
-3. 6420422011 จันทร์ทนีย์ พัฒนสุขกุล
+3. 6420422011 Juntanee Pattanasukkul จันทร์ทนีย์ พัฒนสุขกุล
 
-4. 6420422017 วิศรุต วงศ์ซิ้ม
+4. 6420422017 Witsarut Wongsim วิศรุต วงศ์ซิ้ม
 
-5. 6420422021 สุชาวลี จีระธัญญาสกุล
+5. 6420422021 Suchawalee Jeeratanyasakul สุชาวลี จีระธัญญาสกุล
 ## Assignment :
 
  - Use Python to write the data source line-by-line from the CSV to SQL database (DB) (source part). The writing duration (d) must be random and between 0 < d < 2 seconds.
@@ -22,9 +22,6 @@ The source part (NoSQL DB) will incrementally consume the data from topic3
 easy, e.g., simple statistics
 medium, e.g., join, windowed, etc.
 hard, e.g., analytical insight
-
- 
- 
 
 ## Objective:
 
