@@ -101,8 +101,8 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    ```psql -U postgres-user customers```
    
    Inside Ksql, run the command to check:
-
-   ```SHOW TABLES;```
+   
+   ```customers=# select * from foodcoded;```
 
 3. Run the file import_foodcoded.py to import data from the food_coded.csv file.
 
@@ -110,13 +110,16 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
 
 4. Start Ksql to create the connector.
 
-   ```docker exec -it ksqldb-cli ksql http://ksqldb-server:8088```
+   ```docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
    
-   Enter the following queries to create a source connector:
+    SET 'auto.offset.reset' = 'earliest';
+    
+    ```
+   
+   To create a source connector:
 
- 
       ```
-      SET 'auto.offset.reset' = 'earliest';
+      
        CREATE SOURCE CONNECTOR customers_reader WITH (
        'connector.class' = 'io.debezium.connector.postgresql.PostgresConnector',
        'database.hostname' = 'postgres',
@@ -134,17 +137,16 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    
    ```
  
-   Create a Stream topic1 for receiving data:
+   Create a Stream topic foodcoded for input data:
  
       ```CREATE STREAM foodcoded WITH (kafka_topic = 'localhost.public.foodcoded', value_format = 'avro');```
    
  
-   Create a Stream topic2 for cleaning data follow food_clean.sql.
+   Create a Stream topic food_clean  for cleaning data  ksql command in food_clean.sql.
 
-   Create a Stream topic3 for analyzing data follow food_analyze.sql.
+   Create a Stream topic for analyze data ksql command in food_analyze.sql.
 
-   Enter the following queries to create a sink connector:
-
+   To create a sink connector:
  
    ```
    CREATE SINK CONNECTOR `mongodb_foodcoded_sink` WITH (
@@ -162,8 +164,6 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    
    ```   
 
-
- 
   6. Data visualization from mongoDB with python 
  Using Dash plotly
  
