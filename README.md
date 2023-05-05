@@ -85,7 +85,7 @@ https://debezium.io/documentation/reference/1.1/connectors/mongodb.html
 
 
 ## Steps:
-0. download zip file and unzip
+0. download zip file "docker-main.zip" and unzip
 cmd in folder
 1. Create docker file from the ksqlDB tutorial page. 
 https://docs.ksqldb.io/en/latest/tutorials/etl/
