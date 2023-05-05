@@ -36,7 +36,7 @@ CREATE STREAM foodcoded_clean WITH (kafka_topic = 'foodcoded_clean') AS
 			waffle_calories				  = CASE WHEN (foodcoded.waffle_calories = '') THEN null ELSE foodcoded.waffle_calories END,
 			turkey_calories				  = CASE WHEN (foodcoded.turkey_calories = '') THEN null ELSE foodcoded.turkey_calories END,			
             weight                        = CASE WHEN (foodcoded.weight = '') THEN null
-                                            ELSE ELSE CAST(REGEXP_REPLACE(foodcoded.weight, '[^0-9]+', '') AS INT) END
+                                            ELSE CAST(REGEXP_REPLACE(foodcoded.weight, '[^0-9]+', '') AS INT) END
       FROM foodcoded
 	  WHERE calories_day is not NULL
       EMIT CHANGES;
