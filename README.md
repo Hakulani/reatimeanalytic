@@ -679,7 +679,7 @@ ksql> SHOW TOPICS;
 View data in Elasticsearch  
 
 curl "http://localhost:9200/foodcoded_analyze/_search?pretty"
+
 curl -XGET "http://localhost:9200/foodcoded_analyze/_search?pretty"
 
-
-```
+ ```
