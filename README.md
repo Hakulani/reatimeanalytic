@@ -108,9 +108,9 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    "database"='foodcoded_db',
    "collection"='foodcoded_analyze',
    "topics"='food_analyze'
-);   
+);```   
 
-```
+
  
   6. Data visualization from mongoDB with python 
  Using Dash plotly
