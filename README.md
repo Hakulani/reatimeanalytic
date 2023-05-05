@@ -33,6 +33,8 @@ The project uses the Food Choices dataset available on Kaggle. The dataset conta
 
 ## System Design:
 
+![design](https://user-images.githubusercontent.com/61573397/236549678-43c5a323-4010-48b2-9cab-40ad177102f2.png)
+
 The system design for the project is as follows:
 
 1. Use Python to write the data source line-by-line from the CSV to SQL database (DB) (source part). The writing duration (d) must be random and between 0 < d < 2 seconds.
