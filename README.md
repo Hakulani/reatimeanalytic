@@ -34,9 +34,10 @@ The system design for the project is as follows:
   - Medium, e.g., join, windowed, etc.
   - Hard, e.g., analytical insight
 
-Steps:
+## Steps:
 
 1. Create docker file from the ksqlDB tutorial page. 
+https://docs.ksqldb.io/en/latest/tutorials/etl/
 
 2. After docker build is complete, run the file create_table.py to create a table inside Postgres, read csv file, and insert into Postgres.
 
