@@ -107,8 +107,9 @@ https://docs.ksqldb.io/en/latest/tutorials/etl/
    "connection.uri"='mongodb://root:rootpassword@mongodb:27017/admin?readPreference=primary&appname=ksqldbConnect&ssl=false',
    "database"='foodcoded_db',
    "collection"='foodcoded_analyze',
-   "topics"='food_analyze'
-);```   
+   "topics"='food_analyze');
+   
+   ```   
 
 
  
