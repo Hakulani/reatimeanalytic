@@ -40,7 +40,7 @@ with open(csv_file_path, 'r') as csv_file:
                 row_values[i] = None
         cursor.execute(insert_row_sql, row_values)
 
-        print('import row ',str(count))
+        print('inser row:',str(count))
         count = count+1
         conn.commit()
         time.sleep(random.randint(0, 2))
@@ -49,4 +49,4 @@ conn.commit()
 cursor.close()
 conn.close()
 
-print(f"{len(columns)} columns and {cursor.rowcount} rows were imported from {csv_file_path} to foodcoded table.")
+print(f"Import {len(columns)} columns and {cursor.rowcount} rows from {csv_file_path} to Postgre Complete!.")
